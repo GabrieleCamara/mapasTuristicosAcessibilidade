@@ -1,0 +1,32 @@
+var json_PontosnibusTurismo_5 = {
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 18.0, "NOME": "PARQUE TANGUÁ" }, "geometry": { "type": "Point", "coordinates": [ -49.280764543660943, -25.378355374794832 ] } },
+{ "type": "Feature", "properties": { "Id": 14.0, "NOME": "BOSQUE ALEMÃO" }, "geometry": { "type": "Point", "coordinates": [ -49.285586891382998, -25.40728896278851 ] } },
+{ "type": "Feature", "properties": { "Id": 14.0, "NOME": "BOSQUE ALEMÃO" }, "geometry": { "type": "Point", "coordinates": [ -49.288476324343101, -25.404537148008789 ] } },
+{ "type": "Feature", "properties": { "Id": 15.0, "NOME": "UNIVERSIDADE LIVRE DO MEIO AMBIENTE (UNILIVRE)" }, "geometry": { "type": "Point", "coordinates": [ -49.282384899062357, -25.398630330567137 ] } },
+{ "type": "Feature", "properties": { "Id": 16.0, "NOME": "PARQUE SÃO LOURENÇO" }, "geometry": { "type": "Point", "coordinates": [ -49.267506348080133, -25.388441208851258 ] } },
+{ "type": "Feature", "properties": { "Id": 17.0, "NOME": "ÓPERA DE ARAME \/ PEDREIRA PAULO LEMINSKI" }, "geometry": { "type": "Point", "coordinates": [ -49.275195636575958, -25.385623923560757 ] } },
+{ "type": "Feature", "properties": { "Id": 1.0, "NOME": "PRAÇA TIRADENTES" }, "geometry": { "type": "Point", "coordinates": [ -49.271434979207989, -25.429640093943142 ] } },
+{ "type": "Feature", "properties": { "Id": 2.0, "NOME": "RUA DAS FLORES" }, "geometry": { "type": "Point", "coordinates": [ -49.274153755201205, -25.43214972045638 ] } },
+{ "type": "Feature", "properties": { "Id": 3.0, "NOME": "RUA 24 HORAS" }, "geometry": { "type": "Point", "coordinates": [ -49.276446983202113, -25.434523241913173 ] } },
+{ "type": "Feature", "properties": { "Id": 4.0, "NOME": "MUSEU FERROVIÁRIO" }, "geometry": { "type": "Point", "coordinates": [ -49.264825311687922, -25.437633921620748 ] } },
+{ "type": "Feature", "properties": { "Id": 5.0, "NOME": "TEATRO PAIOL" }, "geometry": { "type": "Point", "coordinates": [ -49.257201451155304, -25.448046925883567 ] } },
+{ "type": "Feature", "properties": { "Id": 6.0, "NOME": "JARDIM BOTÂNICO" }, "geometry": { "type": "Point", "coordinates": [ -49.241451508339601, -25.442048741046843 ] } },
+{ "type": "Feature", "properties": { "Id": 7.0, "NOME": "RODOFERROVIÁRIA \/ MERCADO MUNICIPAL" }, "geometry": { "type": "Point", "coordinates": [ -49.257297134074975, -25.435605601632219 ] } },
+{ "type": "Feature", "properties": { "Id": 8.0, "NOME": "TEATRO GUAÍRA \/ UNIVERSIDADE FEDERAL DO PARANÁ" }, "geometry": { "type": "Point", "coordinates": [ -49.265192219796774, -25.428700524291997 ] } },
+{ "type": "Feature", "properties": { "Id": 9.0, "NOME": "PAÇO DA LIBERDADE" }, "geometry": { "type": "Point", "coordinates": [ -49.269267811922433, -25.429470604656554 ] } },
+{ "type": "Feature", "properties": { "Id": 10.0, "NOME": "MEMORIAL ÁRABE \/ PASSEIO PÚBLICO" }, "geometry": { "type": "Point", "coordinates": [ -49.268732203264854, -25.423654726960375 ] } },
+{ "type": "Feature", "properties": { "Id": 11.0, "NOME": "CENTRO CÍVICO" }, "geometry": { "type": "Point", "coordinates": [ -49.267603292287873, -25.416740107205097 ] } },
+{ "type": "Feature", "properties": { "Id": 12.0, "NOME": "MUSEU OSCAR NIEMEYER" }, "geometry": { "type": "Point", "coordinates": [ -49.26658061909837, -25.409056652767095 ] } },
+{ "type": "Feature", "properties": { "Id": 13.0, "NOME": "BOSQUE DO PAPA \/ MEMORIAL POLONÊS" }, "geometry": { "type": "Point", "coordinates": [ -49.271637052328188, -25.409023149417632 ] } },
+{ "type": "Feature", "properties": { "Id": 19.0, "NOME": "PARQUE TINGUI" }, "geometry": { "type": "Point", "coordinates": [ -49.305887084647729, -25.388486588609489 ] } },
+{ "type": "Feature", "properties": { "Id": 20.0, "NOME": "MEMORIAL UCRANIANO" }, "geometry": { "type": "Point", "coordinates": [ -49.30563776422342, -25.402462605028024 ] } },
+{ "type": "Feature", "properties": { "Id": 21.0, "NOME": "PORTAL ITALIANO" }, "geometry": { "type": "Point", "coordinates": [ -49.304347241593049, -25.414600115024498 ] } },
+{ "type": "Feature", "properties": { "Id": 22.0, "NOME": "SANTA FELICIDADE" }, "geometry": { "type": "Point", "coordinates": [ -49.328220230842952, -25.40379540741479 ] } },
+{ "type": "Feature", "properties": { "Id": 23.0, "NOME": "PARQUE BARIGUI" }, "geometry": { "type": "Point", "coordinates": [ -49.305896306602243, -25.423066319067519 ] } },
+{ "type": "Feature", "properties": { "Id": 24.0, "NOME": "TORRE PANORÂMICA" }, "geometry": { "type": "Point", "coordinates": [ -49.294722769195431, -25.423863685781299 ] } },
+{ "type": "Feature", "properties": { "Id": 25.0, "NOME": "SETOR HISTÓRICO" }, "geometry": { "type": "Point", "coordinates": [ -49.274482515433462, -25.427574220507495 ] } }
+]
+}

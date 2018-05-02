@@ -1,0 +1,2073 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/Control.OSMGeocoder.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="data/BairrosdeCuritiba_0.js"></script>
+        <script src="data/readeparque_1.js"></script>
+        <script src="data/Bairros_2.js"></script>
+        <script src="data/LinhanibusTurismo_3.js"></script>
+        <script src="data/_4.js"></script>
+        <script src="data/PontosnibusTurismo_5.js"></script>
+        <script src="data/_6.js"></script>
+        <script src="data/Teatros_7.js"></script>
+        <script src="data/_8.js"></script>
+        <script src="data/Restaurantes_9.js"></script>
+        <script src="data/_10.js"></script>
+        <script src="data/Parques_11.js"></script>
+        <script src="data/_12.js"></script>
+        <script src="data/Museus_13.js"></script>
+        <script src="data/_14.js"></script>
+        <script src="data/Hoteis_15.js"></script>
+        <script src="data/_16.js"></script>
+        <script src="data/Cafes_17.js"></script>
+        <script src="data/_18.js"></script>
+        <script src="data/Bares_19.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        L.control.locate().addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        function pop_BairrosdeCuritiba_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOME'] !== null ? Autolinker.link(String(feature.properties['NOME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NM_REGIONA'] !== null ? Autolinker.link(String(feature.properties['NM_REGIONA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BairrosdeCuritiba_0_0() {
+            return {
+                pane: 'pane_BairrosdeCuritiba_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,119,189,0.0)',
+            }
+        }
+        map.createPane('pane_BairrosdeCuritiba_0');
+        map.getPane('pane_BairrosdeCuritiba_0').style.zIndex = 400;
+        map.getPane('pane_BairrosdeCuritiba_0').style['mix-blend-mode'] = 'normal';
+        var layer_BairrosdeCuritiba_0 = new L.geoJson(json_BairrosdeCuritiba_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BairrosdeCuritiba_0',
+            onEachFeature: pop_BairrosdeCuritiba_0,
+            style: style_BairrosdeCuritiba_0_0,
+        });
+        bounds_group.addLayer(layer_BairrosdeCuritiba_0);
+        function pop_readeparque_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+					<th scope="row">Nome</th>\
+                        <td colspan="2">' + (feature.properties['NOME'] !== null ? Autolinker.link(String(feature.properties['NOME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_readeparque_1_0() {
+            return {
+                pane: 'pane_readeparque_1',
+                opacity: 1,
+                color: 'rgba(128,152,72,0.5)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(102,166,30,0.5)',
+            }
+        }
+        map.createPane('pane_readeparque_1');
+        map.getPane('pane_readeparque_1').style.zIndex = 401;
+        map.getPane('pane_readeparque_1').style['mix-blend-mode'] = 'normal';
+        var layer_readeparque_1 = new L.geoJson(json_readeparque_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_readeparque_1',
+            onEachFeature: pop_readeparque_1,
+            style: style_readeparque_1_0,
+        });
+        bounds_group.addLayer(layer_readeparque_1);
+        map.addLayer(layer_readeparque_1);
+        function pop_Bairros_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+						<th scope="row">Nome</th>\
+                        <td colspan="2">' + (feature.properties['NOME'] !== null ? Autolinker.link(String(feature.properties['NOME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Regional</th>\
+                        <td colspan="2">' + (feature.properties['NM_REGIONA'] !== null ? Autolinker.link(String(feature.properties['NM_REGIONA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bairros_2_0() {
+            return {
+                pane: 'pane_Bairros_2',
+                opacity: 1,
+                color: 'rgba(255,162,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,162,0,0.0)',
+            }
+        }
+        function style_Bairros_2_1() {
+            return {
+                pane: 'pane_Bairros_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,139,121,0.0)',
+            }
+        }
+        map.createPane('pane_Bairros_2');
+        map.getPane('pane_Bairros_2').style.zIndex = 402;
+        map.getPane('pane_Bairros_2').style['mix-blend-mode'] = 'normal';
+        var layer_Bairros_2 = new L.geoJson.multiStyle(json_Bairros_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Bairros_2',
+            onEachFeature: pop_Bairros_2,
+            styles: [style_Bairros_2_0,style_Bairros_2_1,]
+        });
+        bounds_group.addLayer(layer_Bairros_2);
+        map.addLayer(layer_Bairros_2);
+        function pop_LinhanibusTurismo_3(feature, layer) {
+            var popupContent = '<table>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LinhanibusTurismo_3_0() {
+            return {
+                pane: 'pane_LinhanibusTurismo_3',
+                opacity: 1,
+                color: 'rgba(231,41,138,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 6.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_LinhanibusTurismo_3');
+        map.getPane('pane_LinhanibusTurismo_3').style.zIndex = 403;
+        map.getPane('pane_LinhanibusTurismo_3').style['mix-blend-mode'] = 'normal';
+        var layer_LinhanibusTurismo_3 = new L.geoJson(json_LinhanibusTurismo_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_LinhanibusTurismo_3',
+            onEachFeature: pop_LinhanibusTurismo_3,
+            style: style_LinhanibusTurismo_3_0,
+        });
+        bounds_group.addLayer(layer_LinhanibusTurismo_3);
+        map.addLayer(layer_LinhanibusTurismo_3);
+        function pop__4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? Autolinker.link(String(feature.properties['Id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOME'] !== null ? Autolinker.link(String(feature.properties['NOME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__4_0() {
+            return {
+                pane: 'pane__4',
+                shape: 'square',
+                radius: 10.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,176,255,1.0)',
+            }
+        }
+        map.createPane('pane__4');
+        map.getPane('pane__4').style.zIndex = 404;
+        map.getPane('pane__4').style['mix-blend-mode'] = 'normal';
+        var layer__4 = new L.geoJson(json__4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__4',
+            onEachFeature: pop__4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style__4_0(feature));
+            },
+        });
+        var cluster__4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__4.addLayer(layer__4);
+
+        bounds_group.addLayer(layer__4);
+        cluster__4.addTo(map);
+        function pop_PontosnibusTurismo_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">NOME</th>\
+                        <td>' + (feature.properties['NOME'] !== null ? Autolinker.link(String(feature.properties['NOME'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PontosnibusTurismo_5_0() {
+            return {
+                pane: 'pane_PontosnibusTurismo_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/onibus.svg',
+            iconSize: [15.2, 15.2]
+        }),
+            }
+        }
+        map.createPane('pane_PontosnibusTurismo_5');
+        map.getPane('pane_PontosnibusTurismo_5').style.zIndex = 405;
+        map.getPane('pane_PontosnibusTurismo_5').style['mix-blend-mode'] = 'normal';
+        var layer_PontosnibusTurismo_5 = new L.geoJson(json_PontosnibusTurismo_5, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_PontosnibusTurismo_5',
+            onEachFeature: pop_PontosnibusTurismo_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_PontosnibusTurismo_5_0(feature));
+            },
+        });
+        var cluster_PontosnibusTurismo_5 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_PontosnibusTurismo_5.addLayer(layer_PontosnibusTurismo_5);
+
+        bounds_group.addLayer(layer_PontosnibusTurismo_5);
+        cluster_PontosnibusTurismo_5.addTo(map);
+        function pop__6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço_'] !== null ? Autolinker.link(String(feature.properties['Endereço_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__6_0() {
+            return {
+                pane: 'pane__6',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+            }
+        }
+        map.createPane('pane__6');
+        map.getPane('pane__6').style.zIndex = 406;
+        map.getPane('pane__6').style['mix-blend-mode'] = 'normal';
+        var layer__6 = new L.geoJson(json__6, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__6',
+            onEachFeature: pop__6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__6_0(feature));
+            },
+        });
+        var cluster__6 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__6.addLayer(layer__6);
+
+        bounds_group.addLayer(layer__6);
+        cluster__6.addTo(map);
+        function pop_Teatros_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço_'] !== null ? Autolinker.link(String(feature.properties['Endereço_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Teatros_7_0() {
+            return {
+                pane: 'pane_Teatros_7',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/teatros.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Teatros_7');
+        map.getPane('pane_Teatros_7').style.zIndex = 407;
+        map.getPane('pane_Teatros_7').style['mix-blend-mode'] = 'normal';
+        var layer_Teatros_7 = new L.geoJson(json_Teatros_7, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Teatros_7',
+            onEachFeature: pop_Teatros_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Teatros_7_0(feature));
+            },
+        });
+        var cluster_Teatros_7 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Teatros_7.addLayer(layer_Teatros_7);
+
+        bounds_group.addLayer(layer_Teatros_7);
+        cluster_Teatros_7.addTo(map);
+        function pop__8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__8_0() {
+            return {
+                pane: 'pane__8',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,78,163,1.0)',
+            }
+        }
+        map.createPane('pane__8');
+        map.getPane('pane__8').style.zIndex = 408;
+        map.getPane('pane__8').style['mix-blend-mode'] = 'normal';
+        var layer__8 = new L.geoJson(json__8, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__8',
+            onEachFeature: pop__8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__8_0(feature));
+            },
+        });
+        var cluster__8 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__8.addLayer(layer__8);
+
+        bounds_group.addLayer(layer__8);
+        cluster__8.addTo(map);
+        function pop_Restaurantes_9(feature, layer) {
+            var popupContent = '<table>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Restaurantes_9_0() {
+            return {
+                pane: 'pane_Restaurantes_9',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/restaurantes.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Restaurantes_9');
+        map.getPane('pane_Restaurantes_9').style.zIndex = 409;
+        map.getPane('pane_Restaurantes_9').style['mix-blend-mode'] = 'normal';
+        var layer_Restaurantes_9 = new L.geoJson(json_Restaurantes_9, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Restaurantes_9',
+            onEachFeature: pop_Restaurantes_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Restaurantes_9_0(feature));
+            },
+        });
+        var cluster_Restaurantes_9 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Restaurantes_9.addLayer(layer_Restaurantes_9);
+
+        bounds_group.addLayer(layer_Restaurantes_9);
+        cluster_Restaurantes_9.addTo(map);
+        function pop__10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__10_0() {
+            return {
+                pane: 'pane__10',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,129,191,1.0)',
+            }
+        }
+        map.createPane('pane__10');
+        map.getPane('pane__10').style.zIndex = 410;
+        map.getPane('pane__10').style['mix-blend-mode'] = 'normal';
+        var layer__10 = new L.geoJson(json__10, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__10',
+            onEachFeature: pop__10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__10_0(feature));
+            },
+        });
+        var cluster__10 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__10.addLayer(layer__10);
+
+        bounds_group.addLayer(layer__10);
+        cluster__10.addTo(map);
+        function pop_Parques_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Parques_11_0() {
+            return {
+                pane: 'pane_Parques_11',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/parques.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Parques_11');
+        map.getPane('pane_Parques_11').style.zIndex = 411;
+        map.getPane('pane_Parques_11').style['mix-blend-mode'] = 'normal';
+        var layer_Parques_11 = new L.geoJson(json_Parques_11, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Parques_11',
+            onEachFeature: pop_Parques_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Parques_11_0(feature));
+            },
+        });
+        var cluster_Parques_11 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Parques_11.addLayer(layer_Parques_11);
+
+        bounds_group.addLayer(layer_Parques_11);
+        cluster_Parques_11.addTo(map);
+        function pop__12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__12_0() {
+            return {
+                pane: 'pane__12',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(55,126,184,1.0)',
+            }
+        }
+        map.createPane('pane__12');
+        map.getPane('pane__12').style.zIndex = 412;
+        map.getPane('pane__12').style['mix-blend-mode'] = 'normal';
+        var layer__12 = new L.geoJson(json__12, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__12',
+            onEachFeature: pop__12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__12_0(feature));
+            },
+        });
+        var cluster__12 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__12.addLayer(layer__12);
+
+        bounds_group.addLayer(layer__12);
+        cluster__12.addTo(map);
+        function pop_Museus_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['Tripadviso'] !== null ? Autolinker.link(String(feature.properties['Tripadviso'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Museus_13_0() {
+            return {
+                pane: 'pane_Museus_13',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/museus.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Museus_13');
+        map.getPane('pane_Museus_13').style.zIndex = 413;
+        map.getPane('pane_Museus_13').style['mix-blend-mode'] = 'normal';
+        var layer_Museus_13 = new L.geoJson(json_Museus_13, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Museus_13',
+            onEachFeature: pop_Museus_13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Museus_13_0(feature));
+            },
+        });
+        var cluster_Museus_13 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Museus_13.addLayer(layer_Museus_13);
+
+        bounds_group.addLayer(layer_Museus_13);
+        cluster_Museus_13.addTo(map);
+        function pop__14(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Link_Booki'] !== null ? Autolinker.link(String(feature.properties['Link_Booki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Link_TripA'] !== null ? Autolinker.link(String(feature.properties['Link_TripA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__14_0() {
+            return {
+                pane: 'pane__14',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(255,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(228,26,28,1.0)',
+            }
+        }
+        map.createPane('pane__14');
+        map.getPane('pane__14').style.zIndex = 414;
+        map.getPane('pane__14').style['mix-blend-mode'] = 'normal';
+        var layer__14 = new L.geoJson(json__14, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__14',
+            onEachFeature: pop__14,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__14_0(feature));
+            },
+        });
+        var cluster__14 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__14.addLayer(layer__14);
+
+        bounds_group.addLayer(layer__14);
+        cluster__14.addTo(map);
+        function pop_Hoteis_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Booking</th>\
+                        <td colspan="2">' + (feature.properties['Link_Booki'] !== null ? Autolinker.link(String(feature.properties['Link_Booki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['Link_TripA'] !== null ? Autolinker.link(String(feature.properties['Link_TripA'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Hoteis_15_0() {
+            return {
+                pane: 'pane_Hoteis_15',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/hoteis.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Hoteis_15');
+        map.getPane('pane_Hoteis_15').style.zIndex = 415;
+        map.getPane('pane_Hoteis_15').style['mix-blend-mode'] = 'normal';
+        var layer_Hoteis_15 = new L.geoJson(json_Hoteis_15, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Hoteis_15',
+            onEachFeature: pop_Hoteis_15,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Hoteis_15_0(feature));
+            },
+        });
+        var cluster_Hoteis_15 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Hoteis_15.addLayer(layer_Hoteis_15);
+
+        bounds_group.addLayer(layer_Hoteis_15);
+        cluster_Hoteis_15.addTo(map);
+        function pop__16(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__16_0() {
+            return {
+                pane: 'pane__16',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,113,70,1.0)',
+            }
+        }
+        map.createPane('pane__16');
+        map.getPane('pane__16').style.zIndex = 416;
+        map.getPane('pane__16').style['mix-blend-mode'] = 'normal';
+        var layer__16 = new L.geoJson(json__16, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__16',
+            onEachFeature: pop__16,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__16_0(feature));
+            },
+        });
+        var cluster__16 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__16.addLayer(layer__16);
+
+        bounds_group.addLayer(layer__16);
+        cluster__16.addTo(map);
+        function pop_Cafes_17(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Cafes_17_0() {
+            return {
+                pane: 'pane_Cafes_17',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/cafes.svg',
+            iconSize: [15.2, 15.2]
+        }),
+            }
+        }
+        map.createPane('pane_Cafes_17');
+        map.getPane('pane_Cafes_17').style.zIndex = 417;
+        map.getPane('pane_Cafes_17').style['mix-blend-mode'] = 'normal';
+        var layer_Cafes_17 = new L.geoJson(json_Cafes_17, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Cafes_17',
+            onEachFeature: pop_Cafes_17,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Cafes_17_0(feature));
+            },
+        });
+        var cluster_Cafes_17 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Cafes_17.addLayer(layer_Cafes_17);
+
+        bounds_group.addLayer(layer_Cafes_17);
+        cluster_Cafes_17.addTo(map);
+        function pop__18(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? Autolinker.link(String(feature.properties['descriptio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? Autolinker.link(String(feature.properties['altitudeMo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id_2'] !== null ? Autolinker.link(String(feature.properties['id_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__18_0() {
+            return {
+                pane: 'pane__18',
+                radius: 12.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,51,1.0)',
+            }
+        }
+        map.createPane('pane__18');
+        map.getPane('pane__18').style.zIndex = 418;
+        map.getPane('pane__18').style['mix-blend-mode'] = 'normal';
+        var layer__18 = new L.geoJson(json__18, {
+            attribution: '<a href=""></a>',
+            pane: 'pane__18',
+            onEachFeature: pop__18,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style__18_0(feature));
+            },
+        });
+        var cluster__18 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster__18.addLayer(layer__18);
+
+        bounds_group.addLayer(layer__18);
+        cluster__18.addTo(map);
+        function pop_Bares_19(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nome</th>\
+                        <td>' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Endereço</th>\
+                        <td colspan="2">' + (feature.properties['Endereço'] !== null ? Autolinker.link(String(feature.properties['Endereço'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Cidade</th>\
+                        <td colspan="2">' + (feature.properties['Cidade'] !== null ? Autolinker.link(String(feature.properties['Cidade'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Estado</th>\
+                        <td colspan="2">' + (feature.properties['Estado'] !== null ? Autolinker.link(String(feature.properties['Estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">País</th>\
+                        <td colspan="2">' + (feature.properties['País'] !== null ? Autolinker.link(String(feature.properties['País'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Telefone</th>\
+                        <td colspan="2">' + (feature.properties['Telefone'] !== null ? Autolinker.link(String(feature.properties['Telefone'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">Site</th>\
+                        <td colspan="2">' + (feature.properties['Site'] !== null ? Autolinker.link(String(feature.properties['Site'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+						<th scope="row">TripAdvisor</th>\
+                        <td colspan="2">' + (feature.properties['link_tripa'] !== null ? Autolinker.link(String(feature.properties['link_tripa'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Bares_19_0() {
+            return {
+                pane: 'pane_Bares_19',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/bar.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Bares_19');
+        map.getPane('pane_Bares_19').style.zIndex = 419;
+        map.getPane('pane_Bares_19').style['mix-blend-mode'] = 'normal';
+        var layer_Bares_19 = new L.geoJson(json_Bares_19, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Bares_19',
+            onEachFeature: pop_Bares_19,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Bares_19_0(feature));
+            },
+        });
+        var cluster_Bares_19 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Bares_19.addLayer(layer_Bares_19);
+
+        bounds_group.addLayer(layer_Bares_19);
+        cluster_Bares_19.addTo(map);
+        map.on("zoomend", function(e) {
+            if (map.getZoom() <= 11 && map.getZoom() >= 2) {
+                map.addLayer(layer_BairrosdeCuritiba_0);
+            } else if (map.getZoom() > 11 || map.getZoom() < 2) {
+                map.removeLayer(layer_BairrosdeCuritiba_0);
+            }
+            if (map.getZoom() <= 19 && map.getZoom() >= 15) {
+                map.addLayer(layer_readeparque_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 15) {
+                map.removeLayer(layer_readeparque_1);
+            }
+            if (map.getZoom() <= 15 && map.getZoom() >= 11) {
+                map.addLayer(layer_Bairros_2);
+            } else if (map.getZoom() > 15 || map.getZoom() < 11) {
+                map.removeLayer(layer_Bairros_2);
+            }
+        });
+            if (map.getZoom() <= 11 && map.getZoom() >= 2) {
+                map.addLayer(layer_BairrosdeCuritiba_0);
+            } else if (map.getZoom() > 11 || map.getZoom() < 2) {
+                map.removeLayer(layer_BairrosdeCuritiba_0);
+            }
+            if (map.getZoom() <= 19 && map.getZoom() >= 15) {
+                map.addLayer(layer_readeparque_1);
+            } else if (map.getZoom() > 19 || map.getZoom() < 15) {
+                map.removeLayer(layer_readeparque_1);
+            }
+            if (map.getZoom() <= 15 && map.getZoom() >= 11) {
+                map.addLayer(layer_Bairros_2);
+            } else if (map.getZoom() > 15 || map.getZoom() < 11) {
+                map.removeLayer(layer_Bairros_2);
+            }
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Bares_19.png" /> Bares': cluster_Bares_19,'<img src="legend/_18.png" /> ': cluster__18,'<img src="legend/Cafes_17.png" /> Cafes': cluster_Cafes_17,'<img src="legend/_16.png" /> ': cluster__16,'<img src="legend/Hoteis_15.png" /> Hoteis': cluster_Hoteis_15,'<img src="legend/_14.png" /> ': cluster__14,'<img src="legend/Museus_13.png" /> Museus': cluster_Museus_13,'<img src="legend/_12.png" /> ': cluster__12,'<img src="legend/Parques_11.png" /> Parques': cluster_Parques_11,'<img src="legend/_10.png" /> ': cluster__10,'<img src="legend/Restaurantes_9.png" /> Restaurantes': cluster_Restaurantes_9,'<img src="legend/_8.png" /> ': cluster__8,'<img src="legend/Teatros_7.png" /> Teatros': cluster_Teatros_7,'<img src="legend/_6.png" /> ': cluster__6,'<img src="legend/PontosnibusTurismo_5.png" /> Pontos Ônibus Turismo': cluster_PontosnibusTurismo_5,'<img src="legend/_4.png" /> ': cluster__4,'<img src="legend/LinhanibusTurismo_3.png" /> Linha Ônibus Turismo': layer_LinhanibusTurismo_3,'<img src="legend/Bairros_2.png" /> Bairros': layer_Bairros_2,'<img src="legend/readeparque_1.png" /> Área de parque': layer_readeparque_1,'<img src="legend/BairrosdeCuritiba_0.png" /> Bairros de Curitiba': layer_BairrosdeCuritiba_0,}).addTo(map);
+        map.on("zoomend", function(){
+
+            if (map.hasLayer(layer__4)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__4.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__4.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_PontosnibusTurismo_5)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_PontosnibusTurismo_5.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_PontosnibusTurismo_5.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__6)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__6.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__6.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Teatros_7)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Teatros_7.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Teatros_7.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__8)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__8.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__8.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Restaurantes_9)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Restaurantes_9.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Restaurantes_9.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__10)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__10.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__10.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Parques_11)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Parques_11.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Parques_11.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__12)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__12.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__12.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Museus_13)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Museus_13.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Museus_13.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Hoteis_15)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Hoteis_15.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Hoteis_15.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__16)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__16.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__16.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Cafes_17)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Cafes_17.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Cafes_17.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__18)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__18.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__18.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Bares_19)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Bares_19.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Bares_19.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+        });
+        setBounds();
+        var i = 0;
+        layer__4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_PontosnibusTurismo_5.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PontosnibusTurismo_5'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__6.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 9pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__6'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Teatros_7.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 9pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Teatros_7'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__8.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__8'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Restaurantes_9.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Restaurantes_9'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__10.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__10'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Parques_11.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Parques_11'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__12.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__12'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Museus_13.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Museus_13'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Hoteis_15.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Hoteis_15'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__16.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 9pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__16'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Cafes_17.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 9pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Cafes_17'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer__18.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css__18'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Bares_19.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Bares_19'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+            if (map.hasLayer(layer__4)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__4.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__4.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_PontosnibusTurismo_5)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_PontosnibusTurismo_5.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_PontosnibusTurismo_5.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__6)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__6.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__6.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Teatros_7)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Teatros_7.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Teatros_7.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__8)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__8.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__8.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Restaurantes_9)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Restaurantes_9.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Restaurantes_9.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__10)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__10.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__10.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Parques_11)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Parques_11.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Parques_11.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__12)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__12.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__12.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Museus_13)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Museus_13.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Museus_13.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Hoteis_15)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Hoteis_15.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Hoteis_15.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__16)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__16.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__16.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Cafes_17)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Cafes_17.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Cafes_17.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer__18)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer__18.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer__18.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+            if (map.hasLayer(layer_Bares_19)) {
+                if (map.getZoom() <= 19 && map.getZoom() >= 16) {
+                    layer_Bares_19.eachLayer(function (layer) {
+                        layer.openTooltip();
+                    });
+                } else {
+                    layer_Bares_19.eachLayer(function (layer) {
+                        layer.closeTooltip();
+                    });
+                }
+            }
+        resetLabels([layer__4,layer_PontosnibusTurismo_5,layer__6,layer_Teatros_7,layer__8,layer_Restaurantes_9,layer__10,layer_Parques_11,layer__12,layer_Museus_13,layer_Hoteis_15,layer__16,layer_Cafes_17,layer__18,layer_Bares_19]);
+        map.on("zoomend", function(){
+            resetLabels([layer__4,layer_PontosnibusTurismo_5,layer__6,layer_Teatros_7,layer__8,layer_Restaurantes_9,layer__10,layer_Parques_11,layer__12,layer_Museus_13,layer_Hoteis_15,layer__16,layer_Cafes_17,layer__18,layer_Bares_19]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer__4,layer_PontosnibusTurismo_5,layer__6,layer_Teatros_7,layer__8,layer_Restaurantes_9,layer__10,layer_Parques_11,layer__12,layer_Museus_13,layer_Hoteis_15,layer__16,layer_Cafes_17,layer__18,layer_Bares_19]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer__4,layer_PontosnibusTurismo_5,layer__6,layer_Teatros_7,layer__8,layer_Restaurantes_9,layer__10,layer_Parques_11,layer__12,layer_Museus_13,layer_Hoteis_15,layer__16,layer_Cafes_17,layer__18,layer_Bares_19]);
+        });
+        </script>
+    </body>
+</html>
