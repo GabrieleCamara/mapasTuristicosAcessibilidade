@@ -1,3 +1,6 @@
+# Mapas Turisticos de Acessibilidade
+## https://gabrielecamara.github.io/mapasTuristicosAcessibilidade/
+
 Esse mapa web é o produto final da disciplina optativa de Visualização Cartográfica do Curso de Engenharia Cartográfica e de Agrimensura, da Universidade Federal do Paraná.
 Foi elabora pela aluna Gabriele Silveira Camara, com o objetivo de tornar o turismo na cidade de Curitiba, mais acessível a pessoas com deficiência física ou com mobilidade reduzida.
 
